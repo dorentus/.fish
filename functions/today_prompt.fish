@@ -3,27 +3,27 @@ function today_prompt
     case "01"
       printf ㋀
     case "02"
-			printf ㋁
+      printf ㋁
     case "03"
-			printf ㋂
+      printf ㋂
     case "04"
-			printf ㋃
+      printf ㋃
     case "05"
-			printf ㋄
+      printf ㋄
     case "06"
-			printf ㋅
+      printf ㋅
     case "07"
-			printf ㋆
+      printf ㋆
     case "08"
-			printf ㋇
+      printf ㋇
     case "09"
-			printf ㋈
+      printf ㋈
     case "10"
-			printf ㋉
+      printf ㋉
     case "11"
-			printf ㋊
+      printf ㋊
     case "12"
-			printf ㋋
+      printf ㋋
     case "*"
   end
 
@@ -31,65 +31,65 @@ function today_prompt
     case "01"
       printf ㏠
     case "02"
-			printf ㏡
+      printf ㏡
     case "03"
-			printf ㏢
+      printf ㏢
     case "04"
-			printf ㏣
+      printf ㏣
     case "05"
-			printf ㏤
+      printf ㏤
     case "06"
-			printf ㏥
+      printf ㏥
     case "07"
-			printf ㏦
+      printf ㏦
     case "08"
-			printf ㏧
+      printf ㏧
     case "09"
-			printf ㏨
+      printf ㏨
     case "10"
-			printf ㏩
+      printf ㏩
     case "11"
-			printf ㏪
+      printf ㏪
     case "12"
-			printf ㏫
-		case "13"
+      printf ㏫
+    case "13"
       printf ㏬
     case "14"
-			printf ㏭
+      printf ㏭
     case "15"
-			printf ㏮
+      printf ㏮
     case "16"
-			printf ㏯
+      printf ㏯
     case "17"
-			printf ㏰
+      printf ㏰
     case "18"
-			printf ㏱
+      printf ㏱
     case "19"
-			printf ㏲
+      printf ㏲
     case "20"
-			printf ㏳
+      printf ㏳
     case "21"
-			printf ㏴
+      printf ㏴
     case "22"
-			printf ㏵
+      printf ㏵
     case "23"
-			printf ㏶
+      printf ㏶
     case "24"
-			printf ㏷
+      printf ㏷
     case "25"
-			printf ㏸
+      printf ㏸
     case "26"
-			printf ㏹
+      printf ㏹
     case "27"
-			printf ㏺
+      printf ㏺
     case "28"
-			printf ㏻
+      printf ㏻
     case "29"
-			printf ㏼
+      printf ㏼
     case "30"
-			printf ㏽
+      printf ㏽
     case "31"
-			printf ㏾
+      printf ㏾
     case "*"
   end
 
