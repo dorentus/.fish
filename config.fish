@@ -1,5 +1,3 @@
-if not status --is-login; exit 0; end
-
 stty -echo
 
 # global env
