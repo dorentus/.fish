@@ -1,4 +1,10 @@
 function fish_greeting
   printf "\n"
-  fortune -s | lolcat
+  if which fortune > /dev/null
+    if which lolcat > /dev/null
+      fortune -s | lolcat
+    else
+      fortune -s
+    end
+  end
 end

@@ -11,38 +11,57 @@ set -U SSL_CERT_FILE "/usr/local/etc/ssl/certs/cacert.pem"
 # rbenv
 if which rbenv > /dev/null
   set -gx PATH $HOME/.rbenv/shims $PATH
-  rbenv rehash >/dev/null ^&1
+  rbenv rehash > /dev/null ^&1
 end
 
 # tools from homebrew
-alias find=gfind
-alias sed=gsed
+if which gfind > /dev/null  # findutils
+  alias find   gfind
+end
+
+if which gsed > /dev/null # gnu-sed
+  alias sed    gsed
+end
 
 # colors ls
-alias ls='gls --color=auto'
-alias dir='gdir --color=auto'
-alias vdir='gvdir --color=auto'
+if test (uname) = "Linux"
+  alias ls     'ls --color=auto'
+  alias dir    'dir --color=auto'
+  alias vdir   'vdir --color=auto'
+else if which brew > /dev/null ; and brew info coreutils | grep -v 'Not installed' > /dev/null
+  alias ls     'gls --color=auto'
+  alias dir    'gdir --color=auto'
+  alias vdir   'gvdir --color=auto'
+end
 
 # colors other
-alias grep='grep --color=auto'
-alias gfrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias grep     'grep --color=auto'
+alias gfrep    'fgrep --color=auto'
+alias egrep    'egrep --color=auto'
 
 # more ls
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
+alias ll       'ls -l'
+alias la       'ls -A'
+alias l        'ls -CF'
 
 # mysql UTF-8
-alias mysql='mysql --default-character-set=utf8'
+alias mysql    'mysql --default-character-set=utf8'
 
 # others
-alias rscp='rsync -vazP -e ssh'
-alias axel='axel -a'
-alias tree='tree -N'
+alias rscp     'rsync -vazP -e ssh'
+alias axel     'axel -a'
+alias tree     'tree -N'
 
 # LS_COLORS
-eval (gdircolors -c ~/.dircolors | sed 's/>&\/dev\/null$//')
+if not [ -r ~/.dircolors ]
+  touch ~/.dircolors
+end
+
+if which gdircolors > /dev/null
+  eval (gdircolors -c ~/.dircolors | sed 's/>&\/dev\/null$//')
+else if which dircolors > /dev/null
+  eval (dircolors -c ~/.dircolors | sed 's/>&\/dev\/null$//')
+end
 
 # fish git prompt
 set -g __fish_git_prompt_show_informative_status 1

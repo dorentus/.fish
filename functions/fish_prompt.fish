@@ -2,11 +2,21 @@ function fish_prompt
   set -l last_status $status
 
   if not set -q __fish_prompt_computername
-    set -g __fish_prompt_computername (scutil --get ComputerName)
+    if which scutil > /dev/null
+      set -g __fish_prompt_computername (scutil --get ComputerName)
+    else
+      set -g __fish_prompt_computername (hostname)
+    end
   end
 
   if not set -q __fish_prompt_symbol
-    set -g __fish_prompt_symbol (~/bin/choose_by_hostname 🍏 🍡 👾 ⭕ 🌀 🌐)
+    begin
+      set -l symbols 🍏 🍡 👾 ⭕ 🌀 🌐
+      set -l symbols_count (count $symbols)
+      set -l hosthash (hostname | tr -d '\n' | shasum)
+      set -l selected_index (ruby -e "print '$hosthash'.to_i(16) % $symbols_count + 1")
+      set -g __fish_prompt_symbol $symbols[$selected_index]
+    end
   end
 
   if not test $last_status -eq 0
@@ -14,7 +24,7 @@ function fish_prompt
   else
     set_color black
   end
-  printf "\n┌─"  
+  printf "\n┌─"
 
   set_color black
   printf $USER
