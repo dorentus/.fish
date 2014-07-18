@@ -10,12 +10,18 @@ function fish_prompt
   end
 
   if not set -q __fish_prompt_symbol
-    begin
-      set -l symbols 🍏 🍡 👾 ⭕ 🌀 🌐
-      set -l symbols_count (count $symbols)
-      set -l hosthash (hostname -f | tr -d '\n' | shasum)
-      set -l selected_index (ruby -e "print '$hosthash'.to_i(16) % $symbols_count + 1")
-      set -g __fish_prompt_symbol $symbols[$selected_index]
+    set -l symbols 🍏 🍡 👾 ⭕ 🌀 🌐
+    set -l symbols_count (count $symbols)
+    set -l hosthash (hostname -f | tr -d '\n' | shasum)
+    set -l selected_index (ruby -e "print '$hosthash'.to_i(16) % $symbols_count + 1")
+    set -g __fish_prompt_symbol $symbols[$selected_index]
+  end
+
+  if not set -q __fish_prompt_at_symbol
+    if test (uname) = 'Darwin'
+      set -g __fish_prompt_at_symbol 
+    else
+      set -g __fish_prompt_at_symbol @
     end
   end
 
@@ -29,11 +35,10 @@ function fish_prompt
   set_color black
   printf $USER
 
-  set_color 260d40
-  printf 〄
-
-  set_color normal
   set_color black
+  printf $__fish_prompt_at_symbol
+
+  set_color black --bold
   printf $__fish_prompt_computername
 
   set_color normal
