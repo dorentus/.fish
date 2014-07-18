@@ -26,39 +26,20 @@ function fish_prompt
   end
 
   if not test $last_status -eq 0
-    set_color $fish_color_error
+    set prompt_line_color $fish_color_error
   else
-    set_color black
+    set prompt_line_color black
   end
-  printf "\n┌─"
 
-  set_color black
-  printf $USER
-
-  set_color black
-  printf $__fish_prompt_at_symbol
-
-  set_color black --bold
-  printf $__fish_prompt_computername
-
-  set_color normal
-  printf ":"
-
-  set_color blue
-  printf '%s' (echo $PWD | sed -e "s|^$HOME|~|")
-
-  if not test $last_status -eq 0
-    set_color $fish_color_error
-  else
-    set_color black
-  end
-  printf "\n└───"
-
-  set_color black
-  printf "%s " $__fish_prompt_symbol
-
-  set_color normal
-  printf "%s " (__fish_git_prompt)
+  printf "%s\n┌─%s%s%s%s%s%s%s:%s%s%s\n└───%s%s %s%s " \
+    (set_color $prompt_line_color) \
+    (set_color black) $USER \
+    (set_color black) $__fish_prompt_at_symbol \
+    (set_color black --bold) $__fish_prompt_computername (set_color normal) \
+    (set_color blue) (echo $PWD | sed -e "s|^$HOME|~|") \
+    (set_color $prompt_line_color) \
+    (set_color black) $__fish_prompt_symbol (set_color normal) \
+    (__fish_git_prompt)
 
   set_color normal
 end
