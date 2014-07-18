@@ -1,5 +1,5 @@
-# .fish
-.config/fish
+# .config/fish
+![screenshot](http://dn-madokami.qbox.me/.fish/screenshot.png)
 
 ## Usage
 1. Install [fish](http://fishshell.com)
