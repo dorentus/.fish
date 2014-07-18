@@ -7,6 +7,10 @@ set -U EDITOR vim
 set -U SSL_CERT_FILE "/usr/local/etc/ssl/certs/cacert.pem"
 
 # rbenv
+if test -x ~/.rbenv/bin/rbenv
+  set -gx PATH $HOME/.rbenv/bin $PATH
+end
+
 if which rbenv > /dev/null
   set -gx PATH $HOME/.rbenv/shims $PATH
   rbenv rehash > /dev/null ^&1
