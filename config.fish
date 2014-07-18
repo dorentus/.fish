@@ -2,6 +2,7 @@ stty -echo
 
 # global env
 set -gx LC_TIME 'ja_JP.UTF-8'
+set -gx LC_MESSAGES 'en_US.UTF-8'
 set -gx PATH $HOME/bin /usr/local/sbin /usr/local/bin $PATH
 set -U EDITOR vim
 set -U SSL_CERT_FILE "/usr/local/etc/ssl/certs/cacert.pem"
