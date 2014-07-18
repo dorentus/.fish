@@ -1,3 +1,3 @@
 function urlencode
-  ruby -r open-uri -e "print URI::encode('$argv')"
+  perl -MURI::Escape -le "print uri_escape('$argv')"
 end
