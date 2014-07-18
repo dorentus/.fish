@@ -5,7 +5,7 @@ function fish_prompt
     if which scutil > /dev/null
       set -g __fish_prompt_computername (scutil --get ComputerName)
     else
-      set -g __fish_prompt_computername (hostname)
+      set -g __fish_prompt_computername (hostname -f)
     end
   end
 
