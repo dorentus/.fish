@@ -2,4 +2,5 @@
 /fish_read_history
 /fish_history
 /fishd.*
+/local.fish
 .DS_Store

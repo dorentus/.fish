@@ -91,4 +91,9 @@ set -g __fish_git_prompt_color_cleanstate green bold
 set -g __fish_git_prompt_color_suffix black
 set -g __fish_git_prompt_color_prefix black
 
+# local configurations
+if test -r ~/.config/fish/local.fish
+  source ~/.config/fish/local.fish
+end
+
 stty echo
