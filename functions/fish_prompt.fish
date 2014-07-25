@@ -5,14 +5,14 @@ function fish_prompt
     if which scutil > /dev/null
       set -g __fish_prompt_computername (scutil --get ComputerName)
     else
-      set -g __fish_prompt_computername (hostname -f)
+      set -g __fish_prompt_computername (hostname -f ^ /dev/null; or hostname)
     end
   end
 
   if not set -q __fish_prompt_symbol
     set -l symbols 🍏 🍡 👾 ⭕ 🌀 🌐
     set -l symbols_count (count $symbols)
-    set -l hosthash (hostname -f | tr -d '\n' | shasum)
+    set -l hosthash (hostname -f ^ /dev/null; or hostname | tr -d '\n' | shasum)
     set -l selected_index (ruby -e "print '$hosthash'.to_i(16) % $symbols_count + 1")
     set -g __fish_prompt_symbol $symbols[$selected_index]
   end
