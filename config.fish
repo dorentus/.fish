@@ -4,8 +4,8 @@ stty -echo
 set -gx LC_TIME 'ja_JP.UTF-8'
 set -gx LC_MESSAGES 'en_US.UTF-8'
 set -gx PATH $HOME/bin /usr/local/sbin /usr/local/bin $PATH
-set -U EDITOR vim
-set -U SSL_CERT_FILE "/usr/local/etc/ssl/certs/cacert.pem"
+set -gx EDITOR vim
+set -gx SSL_CERT_FILE "/usr/local/etc/ssl/certs/cacert.pem"
 
 # rbenv
 if test -x ~/.rbenv/bin/rbenv
